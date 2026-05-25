@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "server": "json-server --watch db.json --port 3000",
+    "format": "prettier --write index.html css/styles.css js/mobile-menu.js db.json"
+  },
+  "devDependencies": {
+    "json-server": "^1.0.0-beta.3",
+    "prettier": "^3.3.3"
+  }
+}
