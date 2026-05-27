@@ -2001,3 +2001,39 @@ button {
   display: block;
   color: inherit;
 }
+
+
+.subscribe-message {
+  min-height: 20px;
+  margin-top: 10px;
+  text-align: left;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: var(--color-green);
+}
+
+.bouquets-btn.is-hidden,
+.is-hidden {
+  display: none !important;
+}
+
+.flowers-item img,
+.bouquets-item img {
+  pointer-events: none;
+}
+
+.flowers-item h3,
+.flowers-item p,
+.bouquets-item h3,
+.bouquets-item p,
+.bouquets-item span {
+  pointer-events: none;
+}
+
+@media screen and (max-width: 767px) {
+  .feedback-arrows,
+  .slider-arrows {
+    justify-content: flex-end;
+  }
+}

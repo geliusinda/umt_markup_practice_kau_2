@@ -26,6 +26,24 @@
       "image": "./images/lavender_dream.jpg",
       "image2x": "./images/lavender_dream@2x.jpg",
       "alt": "Lavender Dream bouquet"
+    },
+    {
+      "id": 4,
+      "title": "Peach Meadow",
+      "description": "A soft and radiant arrangement of peach and blush roses with lush greenery in a straw basket.",
+      "price": "$55",
+      "image": "./images/peach_meadow.jpg",
+      "image2x": "./images/peach_meadow@2x.jpg",
+      "alt": "Peach Meadow bouquet"
+    },
+    {
+      "id": 5,
+      "title": "Blush Romance",
+      "description": "A premium bouquet of deep pink and ivory roses, complemented by silver eucalyptus.",
+      "price": "$34",
+      "image": "./images/blush_romance.jpg",
+      "image2x": "./images/blush_romance@2x.jpg",
+      "alt": "Blush Romance bouquet"
     }
   ],
   "bouquets": [
@@ -100,12 +118,156 @@
       "image": "./images/soft_bloom.jpg",
       "image2x": "./images/soft_bloom@2x.jpg",
       "alt": "Soft Bloom bouquet"
+    },
+    {
+      "id": 9,
+      "title": "Rose Glow",
+      "description": "A graceful rose bouquet with warm peach notes and fresh greenery.",
+      "price": "$42",
+      "image": "./images/peach_meadow.jpg",
+      "image2x": "./images/peach_meadow@2x.jpg",
+      "alt": "Rose Glow bouquet"
+    },
+    {
+      "id": 10,
+      "title": "Lilac Basket",
+      "description": "A soft basket arrangement with lilac accents and airy pastel flowers.",
+      "price": "$46",
+      "image": "./images/blush_romance.jpg",
+      "image2x": "./images/blush_romance@2x.jpg",
+      "alt": "Lilac Basket bouquet"
+    },
+    {
+      "id": 11,
+      "title": "Sunny Basket",
+      "description": "A cheerful floral mix with bright accents for a warm and joyful gift.",
+      "price": "$39",
+      "image": "./images/pastel_garden.jpg",
+      "image2x": "./images/pastel_garden@2x.jpg",
+      "alt": "Sunny Basket bouquet"
+    },
+    {
+      "id": 12,
+      "title": "Pink Harmony",
+      "description": "A balanced bouquet of pink blooms, roses, and soft seasonal greenery.",
+      "price": "$44",
+      "image": "./images/tulip_charm.jpg",
+      "image2x": "./images/tulip_charm@2x.jpg",
+      "alt": "Pink Harmony bouquet"
+    },
+    {
+      "id": 13,
+      "title": "Morning Bloom",
+      "description": "Fresh flowers in gentle colors, created for simple everyday beauty.",
+      "price": "$36",
+      "image": "./images/berry_bloom.jpg",
+      "image2x": "./images/berry_bloom@2x.jpg",
+      "alt": "Morning Bloom bouquet"
+    },
+    {
+      "id": 14,
+      "title": "Garden Smile",
+      "description": "A light floral composition with playful colors and soft green details.",
+      "price": "$48",
+      "image": "./images/sweet_whisper.jpg",
+      "image2x": "./images/sweet_whisper@2x.jpg",
+      "alt": "Garden Smile bouquet"
+    },
+    {
+      "id": 15,
+      "title": "Cream Rose",
+      "description": "Cream and blush roses arranged in a clean elegant style.",
+      "price": "$53",
+      "image": "./images/field_joy.jpg",
+      "image2x": "./images/field_joy@2x.jpg",
+      "alt": "Cream Rose bouquet"
+    },
+    {
+      "id": 16,
+      "title": "Purple Mood",
+      "description": "A deeper floral palette with purple accents and textured greenery.",
+      "price": "$57",
+      "image": "./images/soft_bloom.jpg",
+      "image2x": "./images/soft_bloom@2x.jpg",
+      "alt": "Purple Mood bouquet"
+    },
+    {
+      "id": 17,
+      "title": "Fresh Charm",
+      "description": "A compact bouquet with fresh seasonal flowers and delicate wrapping.",
+      "price": "$41",
+      "image": "./images/peach_meadow.jpg",
+      "image2x": "./images/peach_meadow@2x.jpg",
+      "alt": "Fresh Charm bouquet"
+    },
+    {
+      "id": 18,
+      "title": "Romantic Day",
+      "description": "A romantic flower mix with roses and soft pastel details.",
+      "price": "$59",
+      "image": "./images/blush_romance.jpg",
+      "image2x": "./images/blush_romance@2x.jpg",
+      "alt": "Romantic Day bouquet"
+    },
+    {
+      "id": 19,
+      "title": "Spring Basket",
+      "description": "A sweet basket bouquet with bright spring flowers and greenery.",
+      "price": "$45",
+      "image": "./images/pastel_garden.jpg",
+      "image2x": "./images/pastel_garden@2x.jpg",
+      "alt": "Spring Basket bouquet"
+    },
+    {
+      "id": 20,
+      "title": "Soft Morning",
+      "description": "A calm arrangement with pale blooms and gentle textures.",
+      "price": "$38",
+      "image": "./images/tulip_charm.jpg",
+      "image2x": "./images/tulip_charm@2x.jpg",
+      "alt": "Soft Morning bouquet"
+    },
+    {
+      "id": 21,
+      "title": "Bloom Story",
+      "description": "A fresh hand-tied bouquet with elegant colors and natural shape.",
+      "price": "$52",
+      "image": "./images/berry_bloom.jpg",
+      "image2x": "./images/berry_bloom@2x.jpg",
+      "alt": "Bloom Story bouquet"
+    },
+    {
+      "id": 22,
+      "title": "Happy Roses",
+      "description": "A bright rose bouquet made for celebrations and warm wishes.",
+      "price": "$43",
+      "image": "./images/sweet_whisper.jpg",
+      "image2x": "./images/sweet_whisper@2x.jpg",
+      "alt": "Happy Roses bouquet"
+    },
+    {
+      "id": 23,
+      "title": "Floral Glow",
+      "description": "A colorful seasonal bouquet with a lively and fresh look.",
+      "price": "$50",
+      "image": "./images/field_joy.jpg",
+      "image2x": "./images/field_joy@2x.jpg",
+      "alt": "Floral Glow bouquet"
+    },
+    {
+      "id": 24,
+      "title": "Gentle Garden",
+      "description": "A gentle garden-style bouquet with soft shades and airy greenery.",
+      "price": "$47",
+      "image": "./images/soft_bloom.jpg",
+      "image2x": "./images/soft_bloom@2x.jpg",
+      "alt": "Gentle Garden bouquet"
     }
   ],
   "feedback": [
     {
       "id": 1,
-      "text": "\"Flora made my anniversary unforgettable with their beautiful arrangement!\"",
+      "text": "Flora made my anniversary unforgettable with their beautiful arrangement!",
       "name": "Emma T."
     },
     {
@@ -117,6 +279,31 @@
       "id": 3,
       "text": "The service was exceptional, and the flowers were fresh!",
       "name": "Olivia M."
+    },
+    {
+      "id": 4,
+      "text": "The bouquet was packed beautifully and stayed fresh for days.",
+      "name": "Sophia L."
+    },
+    {
+      "id": 5,
+      "text": "Very easy ordering process and a lovely arrangement for my mom.",
+      "name": "Mia K."
+    },
+    {
+      "id": 6,
+      "text": "Great quality, fast delivery, and the flowers matched the style perfectly.",
+      "name": "Noah S."
+    },
+    {
+      "id": 7,
+      "text": "I loved the colors and the careful details in the bouquet.",
+      "name": "Ava P."
+    },
+    {
+      "id": 8,
+      "text": "Friendly service and a beautiful result. I will order again.",
+      "name": "Liam B."
     }
   ]
 }

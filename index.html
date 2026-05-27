@@ -14,10 +14,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
       rel="stylesheet"
     />
-    <link
-      href="https://cdn.jsdelivr.net/npm/simplelightbox@2.14.3/dist/simple-lightbox.min.css"
-      rel="stylesheet"
-    />
     <link href="./css/styles.css" rel="stylesheet" />
   </head>
   <body>
@@ -129,13 +125,14 @@
               <button
                 aria-label="Previous slide"
                 class="slider-btn"
+                data-flowers-prev
                 type="button"
               >
                 <svg class="slider-icon">
                   <use href="./icons/sprite.svg#left"></use>
                 </svg>
               </button>
-              <button aria-label="Next slide" class="slider-btn" type="button">
+              <button aria-label="Next slide" class="slider-btn" data-flowers-next type="button">
                 <svg class="slider-icon">
                   <use href="./icons/sprite.svg#right"></use>
                 </svg>
@@ -178,13 +175,14 @@
             <button
               aria-label="Previous feedback"
               class="slider-btn"
+              data-feedback-prev
               type="button"
             >
               <svg class="slider-icon">
                 <use href="./icons/sprite.svg#left"></use>
               </svg>
             </button>
-            <button aria-label="Next feedback" class="slider-btn" type="button">
+            <button aria-label="Next feedback" class="slider-btn" data-feedback-next type="button">
               <svg class="slider-icon">
                 <use href="./icons/sprite.svg#right"></use>
               </svg>
@@ -337,6 +335,7 @@
               </button>
             </div>
           </form>
+          <p class="subscribe-message" data-subscribe-message aria-live="polite"></p>
         </div>
         <div class="footer-line"></div>
         <p class="footer-copy">&copy; 2025 Flora. All rights reserved.</p>
@@ -546,7 +545,6 @@
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simplelightbox@2.14.3/dist/simple-lightbox.min.js"></script>
     <script src="./js/mobile-menu.js"></script>
   </body>
 </html>
