@@ -472,13 +472,18 @@ document.addEventListener("click", (event) => {
   const orderOpenElement = event.target.closest("[data-order-open]");
   const productOpenElement = event.target.closest("[data-product-open]");
 
-  if (orderCard) {
-    openOrderModal(orderCard);
+  if (orderOpenElement) {
+    openOrderModal(orderOpenElement);
     return;
   }
 
-  if (orderOpenElement || productOpenElement) {
-    openOrderModal(orderOpenElement || productOpenElement);
+  if (orderCard) {
+    openProductModal(orderCard);
+    return;
+  }
+
+  if (productOpenElement) {
+    openProductModal(productOpenElement);
   }
 });
 
@@ -487,7 +492,7 @@ document.addEventListener("keydown", (event) => {
 
   if ((event.key === "Enter" || event.key === " ") && orderCard) {
     event.preventDefault();
-    openOrderModal(orderCard);
+    openProductModal(orderCard);
   }
 
   if (event.key === "Escape" && activeModal) closeActiveModal();
