@@ -30,7 +30,7 @@ const feedbackPrevBtn = document.querySelector("[data-feedback-prev]");
 const feedbackNextBtn = document.querySelector("[data-feedback-next]");
 const sliderDots = document.querySelectorAll(".flowers .slider-dot");
 
-const API_URL = "http://localhost:3000";
+const API_URL = "http://localhost:3000/api";
 const PER_PAGE = 15;
 
 const body = document.body;
@@ -79,7 +79,7 @@ const clearStatus = (statusElement) => {
 const showError = (statusElement) => {
   if (!statusElement) return;
   statusElement.innerHTML =
-    '<p class="error-message">Sorry, we couldn’t load this section. Please check that json-server is running and try again.</p>';
+    '<p class="error-message">We couldn’t load this section. Please check that the backend server is running and try again.</p>';
 };
 
 const hideLoadMore = () => {
@@ -109,8 +109,22 @@ const getLocalDb = async () => {
 
 const getData = async (resource) => {
   try {
-    const response = await axios.get(`${API_URL}/${resource}`);
-    return response.data;
+    const response = await axios.get(`${API_URL}/${resource}`, {
+      params: {
+        page: 1,
+        limit: 100,
+      },
+    });
+
+    const normalized = normalizePagination({
+      data: response.data,
+      headers: response.headers,
+      page: 1,
+      perPage: 100,
+    });
+
+    if (normalized.items.length) return normalized.items;
+    throw new Error("Empty response");
   } catch (error) {
     const data = await getLocalDb();
     return data[resource] || [];
@@ -135,8 +149,7 @@ const normalizePagination = ({ data, headers, page, perPage }) => {
     Number(headers?.["x-total-count"]) ||
     Number(data?.total) ||
     Number(data?.totalItems) ||
-    Number(data?.items) ||
-    (Number(data?.pages) ? Number(data.pages) * perPage : items.length + (page - 1) * perPage);
+    (Number(data?.totalPages) ? Number(data.totalPages) * perPage : items.length + (page - 1) * perPage);
 
   return { items, total };
 };
@@ -145,8 +158,8 @@ const getPaginatedData = async (resource, page = 1, perPage = PER_PAGE) => {
   try {
     const response = await axios.get(`${API_URL}/${resource}`, {
       params: {
-        _page: page,
-        _per_page: perPage,
+        page,
+        limit: perPage,
       },
     });
 
@@ -172,13 +185,27 @@ const getPaginatedData = async (resource, page = 1, perPage = PER_PAGE) => {
   }
 };
 
-const createImageMarkup = ({ image, image2x, alt }) => `
-  <img
-    alt="${escapeHTML(alt)}"
-    src="${escapeHTML(image)}"
-    srcset="${escapeHTML(image)} 1x, ${escapeHTML(image2x || image)} 2x"
-  />
-`;
+const getImageUrl = (item) => {
+  const image = item.image || item.photo || item.photoURL || "";
+  if (image.startsWith("/photos/")) {
+    return `${API_URL}${image}`;
+  }
+  return image;
+};
+
+const createImageMarkup = (item) => {
+  const image = getImageUrl(item);
+  const image2x = item.image2x || image;
+  const alt = item.alt || `${item.title || "Bouquet"} bouquet`;
+
+  return `
+    <img
+      alt="${escapeHTML(alt)}"
+      src="${escapeHTML(image)}"
+      srcset="${escapeHTML(image)} 1x, ${escapeHTML(image2x)} 2x"
+    />
+  `;
+};
 
 const createFlowerMarkup = (item) => `
   <li class="flowers-item" data-order-product role="button" tabindex="0">
