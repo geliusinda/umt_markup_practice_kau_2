@@ -15,6 +15,7 @@
       rel="stylesheet"
     />
     <link href="./css/styles.css" rel="stylesheet" />
+    <link href="./css/final-fixes.css" rel="stylesheet" />
   </head>
   <body>
     <header class="header">
@@ -395,8 +396,9 @@
                   class="quantity-input"
                   id="product-quantity"
                   name="product_quantity"
-                  min="1"
-                  value="1"
+                  data-product-quantity
+                  min="0"
+                  value="0"
                   type="number"
                 />
               </label>
@@ -430,6 +432,12 @@
             name="selected_product"
             data-selected-product
             value="Spring Elegance"
+          />
+          <input
+            type="hidden"
+            name="product_quantity"
+            data-order-quantity
+            value="0"
           />
           <label class="form-field" for="user-name">
             <span class="form-label">Name*</span>
@@ -471,23 +479,6 @@
               name="customer_message"
               placeholder="Type your message..."
             ></textarea>
-          </label>
-          <label class="agreement" for="agreement-checkbox">
-            <input
-              class="agreement-input visually-hidden"
-              id="agreement-checkbox"
-              name="privacy_policy_acceptance"
-              required
-              type="checkbox"
-            />
-            <span aria-hidden="true" class="agreement-box">
-              <svg class="agreement-icon">
-                <use href="./icons/sprite.svg#check"></use>
-              </svg>
-            </span>
-            <span class="agreement-text"
-              >I accept the terms and privacy policy</span
-            >
           </label>
           <button class="modal-submit btn-primary" type="submit">
             Go to Checkout
@@ -535,13 +526,6 @@
             <a class="mobile-menu-link" href="#contacts"> Contacts </a>
           </li>
         </ul>
-        <button
-          class="mobile-menu-btn btn-primary"
-          data-product-open
-          type="button"
-        >
-          Explore Bouquets
-        </button>
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

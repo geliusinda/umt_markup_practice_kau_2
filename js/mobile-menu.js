@@ -16,6 +16,8 @@ const productTitle = document.querySelector("[data-product-title]");
 const productPrice = document.querySelector("[data-product-price]");
 const productDescription = document.querySelector("[data-product-description]");
 const selectedProductInput = document.querySelector("[data-selected-product]");
+const productQuantityInput = document.querySelector("[data-product-quantity]");
+const orderQuantityInput = document.querySelector("[data-order-quantity]");
 
 const flowersList = document.querySelector("[data-flowers-list]");
 const bouquetsList = document.querySelector("[data-bouquets-list]");
@@ -65,7 +67,11 @@ const escapeHTML = (value) =>
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
 
-const getVisibleCount = () => (window.innerWidth < 768 ? 1 : 3);
+const getVisibleCount = () => {
+  if (window.innerWidth < 768) return 1;
+  if (window.innerWidth < 1200) return 2;
+  return 3;
+};
 
 const showLoader = (statusElement) => {
   if (!statusElement) return;
@@ -416,6 +422,17 @@ const setProductData = (product) => {
   if (selectedProductInput) selectedProductInput.value = product.title;
 };
 
+const resetProductQuantity = () => {
+  if (productQuantityInput) productQuantityInput.value = "0";
+  if (orderQuantityInput) orderQuantityInput.value = "0";
+};
+
+const syncOrderQuantity = () => {
+  if (!orderQuantityInput) return;
+  const quantity = Number(productQuantityInput?.value || 0);
+  orderQuantityInput.value = String(Math.max(0, quantity));
+};
+
 const closeMenu = () => {
   if (!menu) return;
   menu.classList.remove("is-open");
@@ -432,6 +449,7 @@ const openProductModal = (element) => {
   if (!productBackdrop) return;
   if (menu?.classList.contains("is-open")) menu.classList.remove("is-open");
   setProductData(getProductData(element));
+  resetProductQuantity();
   productBackdrop.classList.add("is-open");
   activeModal = productBackdrop;
   lockPage();
@@ -442,6 +460,8 @@ const closeProductModal = ({ keepPageLocked = false } = {}) => {
   if (!productBackdrop) return;
   productBackdrop.classList.remove("is-open");
 
+  if (!keepPageLocked) resetProductQuantity();
+
   if (!keepPageLocked) {
     activeModal = null;
     if (!menu?.classList.contains("is-open")) unlockPage();
@@ -451,7 +471,11 @@ const closeProductModal = ({ keepPageLocked = false } = {}) => {
 const openOrderModal = (element) => {
   if (!orderBackdrop) return;
   if (menu?.classList.contains("is-open")) menu.classList.remove("is-open");
-  setProductData(getProductData(element));
+
+  const productFromCard = element?.closest?.(".flowers-item, .bouquets-item");
+  if (productFromCard) setProductData(getProductData(productFromCard));
+
+  syncOrderQuantity();
   closeProductModal({ keepPageLocked: true });
   orderBackdrop.classList.add("is-open");
   activeModal = orderBackdrop;
@@ -462,6 +486,7 @@ const openOrderModal = (element) => {
 const closeOrderModal = () => {
   if (!orderBackdrop) return;
   orderBackdrop.classList.remove("is-open");
+  resetProductQuantity();
   activeModal = null;
   if (!menu?.classList.contains("is-open")) unlockPage();
 };
@@ -528,6 +553,7 @@ document.addEventListener("keydown", (event) => {
 
 productCloseBtn?.addEventListener("click", () => closeProductModal());
 orderCloseBtn?.addEventListener("click", closeOrderModal);
+productQuantityInput?.addEventListener("input", syncOrderQuantity);
 
 productBackdrop?.addEventListener("click", (event) => {
   if (event.target === productBackdrop) closeProductModal();
@@ -540,8 +566,10 @@ orderBackdrop?.addEventListener("click", (event) => {
 orderForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
 
+  syncOrderQuantity();
   const formData = new FormData(orderForm);
   const orderData = Object.fromEntries(formData.entries());
+  orderData.product_quantity = Number(orderData.product_quantity || 0);
 
   try {
     await axios.post(`${API_URL}/orders`, orderData);

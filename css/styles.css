@@ -2037,3 +2037,150 @@ button {
     justify-content: flex-end;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .header-btn {
+    display: none !important;
+  }
+
+  .hero {
+    min-height: 420px;
+    background-position: 72% top;
+    background-size: auto 420px;
+  }
+
+  .hero-container {
+    min-height: 420px;
+    align-items: center;
+  }
+
+  .hero-content {
+    max-width: 343px;
+  }
+
+  .hero-title {
+    max-width: 343px;
+    margin-bottom: 16px;
+    font-size: 36px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-text {
+    max-width: 343px;
+    margin-bottom: 24px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .footer-social a {
+    width: 40px;
+    height: 40px;
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .section {
+    padding: 48px 0;
+  }
+
+  .feedback.section {
+    padding: 48px 0;
+  }
+
+  .contact.section {
+    padding: 48px 0 56px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+  .mobile-menu-link {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .mobile-menu-btn {
+    display: none !important;
+  }
+
+  .flowers-list {
+    display: flex;
+    flex-direction: row;
+    gap: 28px;
+  }
+
+  .flowers-item,
+  .flowers-item:nth-child(n + 2) {
+    display: block;
+    width: calc((100% - 28px) / 2);
+    flex: 0 0 calc((100% - 28px) / 2);
+  }
+
+  .flowers-item:nth-child(n + 3) {
+    display: none;
+  }
+
+  .flowers-item img {
+    height: 320px;
+  }
+
+  .feedback {
+    min-height: auto;
+    display: block;
+  }
+
+  .feedback-list {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  .feedback-item,
+  .feedback-item:nth-child(n + 2) {
+    display: block;
+    width: calc((100% - 24px) / 2);
+  }
+
+  .feedback-item:nth-child(n + 3) {
+    display: none;
+  }
+
+  .section {
+    padding: 72px 0;
+  }
+
+  .feedback.section {
+    padding: 72px 0;
+  }
+
+  .contact.section {
+    padding: 72px 0;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .section {
+    padding: 80px 0;
+  }
+
+  .feedback {
+    min-height: auto;
+    display: block;
+  }
+
+  .feedback.section {
+    padding: 80px 0;
+  }
+
+  .contact.section {
+    padding: 80px 0;
+  }
+}
+
+.agreement {
+  display: none !important;
+}
+
