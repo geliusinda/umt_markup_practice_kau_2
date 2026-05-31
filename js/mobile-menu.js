@@ -30,7 +30,8 @@ const feedbackPrevBtn = document.querySelector("[data-feedback-prev]");
 const feedbackNextBtn = document.querySelector("[data-feedback-next]");
 const sliderDots = document.querySelectorAll(".flowers .slider-dot");
 
-const API_URL = "http://localhost:3000/api";
+const SERVER_URL = "https://flora-backend-final.onrender.com";
+const API_URL = "https://flora-backend-final.onrender.com/api";
 const PER_PAGE = 15;
 
 const body = document.body;
@@ -188,7 +189,7 @@ const getPaginatedData = async (resource, page = 1, perPage = PER_PAGE) => {
 const getImageUrl = (item) => {
   const image = item.image || item.photo || item.photoURL || "";
   if (image.startsWith("/photos/")) {
-    return `${API_URL}${image}`;
+    return `${SERVER_URL}${image}`;
   }
   return image;
 };
@@ -536,10 +537,19 @@ orderBackdrop?.addEventListener("click", (event) => {
   if (event.target === orderBackdrop) closeOrderModal();
 });
 
-orderForm?.addEventListener("submit", (event) => {
+orderForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
-  orderForm.reset();
-  closeOrderModal();
+
+  const formData = new FormData(orderForm);
+  const orderData = Object.fromEntries(formData.entries());
+
+  try {
+    await axios.post(`${API_URL}/orders`, orderData);
+    orderForm.reset();
+    closeOrderModal();
+  } catch (error) {
+    alert("Order was not sent. Please try again.");
+  }
 });
 
 subscribeForm?.addEventListener("submit", (event) => {
